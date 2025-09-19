@@ -1,57 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
-
-body {
-  margin: 0;
-  background-color: #ffffff;
-  font-family: 'Cutive Mono', monospace;
-  color: #ffffff;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-}
-
-/* Pantalla inicial centrada */
-#pantalla-inicial {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 10;
-}
-
-/* Contenedor de texto */
-.contenedor-texto {
-  text-align: center;
-  pointer-events: auto;
-}
-
-/* Título principal */
 .titulo {
   font-size: 8vw;
   font-weight: normal;
-  color: #534949;
-  margin-bottom: 2vh;
+  color: #3b3737;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-/* Nombre del autor */
-.autor {
-  font-size: 4vw;
-  color: #383333;
-  margin-bottom: 1vh;
-}
-
-/* Instagram como link sutil */
-.instagram {
+/* Firma en esquina inferior izquierda */
+.firma {
+  position: absolute;
+  bottom: 2vh;
+  left: 2vw;
   font-size: 3.5vw;
-  color: #383333;
-  text-decoration: none;
+  color: #3b3737;
+  font-family: 'Cutive Mono', monospace;
+  text-align: left;
 }
-.instagram:hover {
+
+.firma a {
+  color: #3b3737;
+  text-decoration: none;
+  font-size: 3.5vw;
+}
+
+.firma a:hover {
   text-decoration: underline;
 }

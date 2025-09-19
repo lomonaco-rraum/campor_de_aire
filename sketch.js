@@ -1,6 +1,5 @@
 let sonido;
 let zonas;
-let dentroDeZona = false;
 
 function preload() {
   sonido = loadSound('voz2.wav',
@@ -16,52 +15,32 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(245);
   noLoop();
-
-  // Visualización de zonas (opcional)
-  if (zonas && zonas.features) {
-    for (let i = 0; i < zonas.features.length; i++) {
-      let coords = zonas.features[i].geometry.coordinates[0];
-      beginShape();
-      for (let j = 0; j < coords.length; j++) {
-        let lon = coords[j][0];
-        let lat = coords[j][1];
-        let x = map(lon, -180, 180, 0, width);
-        let y = map(lat, -90, 90, height, 0);
-        vertex(x, y);
-      }
-      endShape(CLOSE);
-    }
-  }
+  background(255);
 }
 
 function draw() {
-  background(245);
-  noStroke();
-  fill(160, 200, 255, 100);
-  ellipse(width / 2, height / 2, sin(frameCount * 0.05) * 50 + 100);
+  // vacío: atmósfera blanca sin visualización
 }
 
 function iniciarExperiencia() {
   document.getElementById("pantalla-inicial").style.display = "none";
   getAudioContext().resume();
 
-  // Obtener ubicación del espectador
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(pos => {
-      const lat = pos.coords.latitude;
-      const lon = pos.coords.longitude;
+      const punto = [pos.coords.longitude, pos.coords.latitude];
+      console.log("📍 Ubicación:", punto);
 
-      dentroDeZona = verificarZona(lat, lon);
+      const dentro = verificarZona(punto);
+      console.log("📦 Dentro de zona:", dentro);
 
-      if (dentroDeZona) {
-        console.log("✅ Dentro de zona");
+      if (dentro) {
         sonido.setVolume(1);
         sonido.play();
         loop();
       } else {
-        console.log("🚫 Fuera de zona");
+        console.log("🚫 Fuera de zona: no se reproduce sonido");
       }
     }, err => {
       console.log("❌ Error al obtener ubicación", err);
@@ -71,18 +50,16 @@ function iniciarExperiencia() {
   }
 }
 
-// Verifica si el punto está dentro de alguna zona del GeoJSON
-function verificarZona(lat, lon) {
+function verificarZona(punto) {
   for (let i = 0; i < zonas.features.length; i++) {
     let coords = zonas.features[i].geometry.coordinates[0];
-    if (puntoEnPoligono([lon, lat], coords)) {
+    if (puntoEnPoligono(punto, coords)) {
       return true;
     }
   }
   return false;
 }
 
-// Algoritmo clásico para verificar si un punto está dentro de un polígono
 function puntoEnPoligono(punto, poligono) {
   let x = punto[0], y = punto[1];
   let dentro = false;

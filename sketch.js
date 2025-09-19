@@ -8,7 +8,7 @@ function preload() {
     () => console.log("❌ Error al cargar el sonido")
   );
 
-  // Carga del archivo GeoJSON
+  // Carga del archivo GeoJSON con verificación
   zonas = loadJSON('zonas_de_aire.geojson', 
     () => console.log("✅ GeoJSON cargado correctamente"), 
     () => console.log("❌ Error al cargar el GeoJSON")
@@ -48,7 +48,7 @@ function draw() {
 function iniciarExperiencia() {
   console.log("🔊 Botón activado, atmósfera desplegada");
   document.getElementById("pantalla-inicial").style.display = "none";
-  userStartAudio();
+  userStartAudio(); // Asegurate de tener p5.sound cargado en index.html
   sonido.setVolume(1);
   sonido.play();
   loop();

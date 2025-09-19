@@ -2,41 +2,34 @@ let sonido;
 let zonas;
 
 function preload() {
-  sonido = loadSound('voz2.wav'); // asegurate que el archivo esté en la raíz
-  zonas = loadJSON('zonas_de_aire.geojson'); // nombre exacto del archivo GeoJSON
+  console.log("Preload iniciado");
+  // sonido = loadSound('voz2.wav'); // desactivado para testeo
+  // zonas = loadJSON('zonas_de_aire.geojson'); // desactivado para testeo
 }
 
 function setup() {
+  console.log("Setup iniciado");
   createCanvas(windowWidth, windowHeight);
   background(245);
   noLoop();
 
-  // Visualización de zonas sensibles
-if (zonas && zonas.features) {
-  for (let i = 0; i < zonas.features.length; i++) {
-    let coords = zonas.features[i].geometry.coordinates[0]; // primer anillo del polígono
-    beginShape();
-    for (let j = 0; j < coords.length; j++) {
-      let lon = coords[j][0];
-      let lat = coords[j][1];
-      let x = map(lon, -180, 180, 0, width);
-      let y = map(lat, -90, 90, height, 0);
-      vertex(x, y);
-    }
-    endShape(CLOSE);
-  }
-}
+  // Testeo visual mínimo
+  fill(0);
+  textSize(24);
+  text("Campos de aire está vivo", 50, 100);
 }
 
 function draw() {
-  // Visualidad pulsante
+  console.log("Draw ejecutado");
+  background(200);
   fill(160, 200, 255, 100);
   ellipse(width / 2, height / 2, sin(frameCount * 0.05) * 50 + 100);
 }
 
 function iniciarExperiencia() {
+  console.log("Botón activado");
   document.getElementById("pantalla-inicial").style.display = "none";
-  userStartAudio();
-  sonido.play();
+  // userStartAudio();
+  // sonido.play();
   loop();
 }

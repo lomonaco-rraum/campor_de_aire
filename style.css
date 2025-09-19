@@ -35,21 +35,21 @@ body {
 .titulo {
   font-size: 8vw;
   font-weight: normal;
-  color: #ffffff;
+  color: #534949;
   margin-bottom: 2vh;
 }
 
 /* Nombre del autor */
 .autor {
   font-size: 4vw;
-  color: #dddddd;
+  color: #383333;
   margin-bottom: 1vh;
 }
 
 /* Instagram como link sutil */
 .instagram {
   font-size: 3.5vw;
-  color: #cccccc;
+  color: #383333;
   text-decoration: none;
 }
 .instagram:hover {

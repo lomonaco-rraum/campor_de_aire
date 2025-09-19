@@ -1,97 +1,27 @@
-/* Fuente tipográfica */
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Fondo blanco absoluto y tipografía gris */
 body {
-  background-color: #ffffff;
+  background-color: white;
   font-family: 'Cutive Mono', monospace;
-  color: #444444;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
   overflow: hidden;
 }
 
-/* Pantalla inicial centrada */
-#pantalla-inicial {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 10;
-}
-
-/* Título suave */
-#pantalla-inicial h1 {
-  font-size: 20px;
-  color: #666666;
-  margin-bottom: 24px;<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Campos de aire</title>
-  <style>
-    body {
-      background-color: white;
-      font-family: 'Cutive Mono', monospace;
-      color: #555;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .texto {
-      font-size: 4em; /* Doble del tamaño anterior */
-      cursor: pointer;
-    }
-
-    #botonInvisible {
-      opacity: 0;
-      position: absolute;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-  <div class="texto" onclick="document.getElementById('botonInvisible').click()">campos de aire</div>
-  <button id="botonInvisible" onclick="reproducirSonido()"></button>
-  <audio id="audio" src="tu-sonido.mp3"></audio>
-
-  <script>
-    function reproducirSonido() {
-      const audio = document.getElementById("audio");
-      audio.play();
-    }
-  </script>
-</body>
-</html>
-  font-weight: normal;
-}
-
-/* Botón táctil minimalista */
-button {
-  background-color: #ffffff;
-  color: #444444;
-  border: 1px solid #cccccc;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-family: 'Cutive Mono', monospace;
-  border-radius: 6px;
+.texto {
+  font-size: 8vw; /* Escala sensible para móviles */
   cursor: pointer;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  user-select: none;
+  text-align: center;
+  padding: 0 5vw;
 }
 
-button:hover {
-  background-color
+#botonInvisible {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}

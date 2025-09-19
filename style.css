@@ -1,15 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
+  margin: 0;
   background-color: #ffffff;
   font-family: 'Cutive Mono', monospace;
-  color: #ffffff; /* texto blanco sobre fondo blanco */
+  color: #ffffff;
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -30,21 +25,33 @@ body {
   z-index: 10;
 }
 
-/* Texto invisible pero táctil */
-.texto {
-  font-size: 8vw;
-  font-weight: normal;
-  color: #ffffff;
-  user-select: none;
+/* Contenedor de texto */
+.contenedor-texto {
   text-align: center;
   pointer-events: auto;
 }
 
-/* Canvas ocupa toda la pantalla */
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  z-index: 1;
+/* Título principal */
+.titulo {
+  font-size: 8vw;
+  font-weight: normal;
+  color: #ffffff;
+  margin-bottom: 2vh;
+}
+
+/* Nombre del autor */
+.autor {
+  font-size: 4vw;
+  color: #dddddd;
+  margin-bottom: 1vh;
+}
+
+/* Instagram como link sutil */
+.instagram {
+  font-size: 3.5vw;
+  color: #cccccc;
+  text-decoration: none;
+}
+.instagram:hover {
+  text-decoration: underline;
 }

@@ -4,13 +4,13 @@ let zonas;
 function preload() {
   console.log("🎧 Preload iniciado");
 
-  // Carga del sonido
+  // Carga del sonido con verificación
   sonido = loadSound('voz2.wav',
     () => console.log("✅ Sonido cargado correctamente"),
     () => console.log("❌ Error al cargar el sonido")
   );
 
-  // Carga del GeoJSON
+  // Carga del archivo GeoJSON con verificación
   zonas = loadJSON('zonas_de_aire.geojson',
     () => console.log("✅ GeoJSON cargado correctamente"),
     () => console.log("❌ Error al cargar el GeoJSON")
@@ -18,15 +18,15 @@ function preload() {
 }
 
 function setup() {
-  console.log("📱 Canvas móvil creado");
+  console.log("📱 Canvas creado");
   createCanvas(windowWidth, windowHeight);
   background(245);
   noLoop();
 
-  // Visualización de zonas sensibles
+  // Visualización de zonas sensibles como polígonos
   if (zonas && zonas.features) {
     for (let i = 0; i < zonas.features.length; i++) {
-      let coords = zonas.features[i].geometry.coordinates[0];
+      let coords = zonas.features[i].geometry.coordinates[0]; // primer anillo del polígono
       beginShape();
       for (let j = 0; j < coords.length; j++) {
         let lon = coords[j][0];

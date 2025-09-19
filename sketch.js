@@ -3,8 +3,8 @@ let zonas;
 
 function preload() {
   console.log("Preload iniciado");
-  // sonido = loadSound('voz2.wav'); // desactivado para testeo
-  // zonas = loadJSON('zonas_de_aire.geojson'); // desactivado para testeo
+   sonido = loadSound('voz2.wav'); // desactivado para testeo
+   zonas = loadJSON('zonas_de_aire.geojson'); // desactivado para testeo
 }
 
 function setup() {
@@ -29,7 +29,7 @@ function draw() {
 function iniciarExperiencia() {
   console.log("Botón activado");
   document.getElementById("pantalla-inicial").style.display = "none";
-  // userStartAudio();
-  // sonido.play();
+   userStartAudio();
+   sonido.play();
   loop();
 }

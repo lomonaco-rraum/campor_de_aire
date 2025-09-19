@@ -1,27 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: white;
+  background-color: #ffffff;
   font-family: 'Cutive Mono', monospace;
-  color: #555;
+  color: #ffffff; /* texto blanco sobre fondo blanco */
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Pantalla inicial centrada */
+#pantalla-inicial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
+  cursor: pointer;
+  z-index: 10;
 }
 
+/* Texto invisible pero táctil */
 .texto {
-  font-size: 8vw; /* Escala sensible para móviles */
-  cursor: pointer;
+  font-size: 8vw;
+  font-weight: normal;
+  color: #ffffff;
   user-select: none;
   text-align: center;
-  padding: 0 5vw;
+  pointer-events: auto;
 }
 
-#botonInvisible {
-  opacity: 0;
+/* Canvas ocupa toda la pantalla */
+canvas {
   position: absolute;
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 1;
 }

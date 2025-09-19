@@ -31,5 +31,6 @@ function iniciarExperiencia() {
   document.getElementById("pantalla-inicial").style.display = "none";
    userStartAudio();
    sonido.play();
+   userStartAudio ();
   loop();
 }

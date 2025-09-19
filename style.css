@@ -35,7 +35,48 @@ body {
 #pantalla-inicial h1 {
   font-size: 20px;
   color: #666666;
-  margin-bottom: 24px;
+  margin-bottom: 24px;<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Campos de aire</title>
+  <style>
+    body {
+      background-color: white;
+      font-family: 'Cutive Mono', monospace;
+      color: #555;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .texto {
+      font-size: 4em; /* Doble del tamaño anterior */
+      cursor: pointer;
+    }
+
+    #botonInvisible {
+      opacity: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="texto" onclick="document.getElementById('botonInvisible').click()">campos de aire</div>
+  <button id="botonInvisible" onclick="reproducirSonido()"></button>
+  <audio id="audio" src="tu-sonido.mp3"></audio>
+
+  <script>
+    function reproducirSonido() {
+      const audio = document.getElementById("audio");
+      audio.play();
+    }
+  </script>
+</body>
+</html>
   font-weight: normal;
 }
 

@@ -3,14 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <title>Zonas activas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <h1 id="titulo">Zona activa</h1>
+  <div id="pantalla-inicial">
+    <h1 class="titulo">Entre la posibilidad e imposibilidad</h1>
+    <p class="subtitulo">Una ontología experimental sobre el espacio</p>
+    <p class="firma">Paula Lomonaco · IG: @tuusuario</p>
+  </div>
 
-  <video id="video" controls width="400"></video>
-  <br />
-  <img id="imagen" alt="Imagen de la zona" width="400" />
-  <div id="texto"></div>
+  <div id="contenido-curatorial" style="display: none;">
+    <h1 id="titulo"></h1>
+    <img id="imagen" alt="Imagen de la zona" width="400" />
+    <video id="video" controls width="400" style="display: none;"></video>
+    <div id="texto"></div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
   <script src="sketch.js"></script>

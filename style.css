@@ -6,9 +6,39 @@ body {
   text-align: center;
 }
 
-#titulo {
+#pantalla-inicial {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.titulo {
   font-size: 2.5em;
+  margin: 0;
+  font-family: 'Cutive Mono', monospace;
+}
+
+.subtitulo {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  max-width: 80%;
+}
+
+.firma {
   margin-top: 1em;
+}
+
+#contenido-curatorial {
+  padding: 2em;
+}
+
+#titulo {
+  font-size: 2em;
+  margin-top: 1em;
+  font-family: 'Cutive Mono', monospace;
 }
 
 #imagen {
@@ -35,8 +65,12 @@ body {
 }
 
 @media (max-width: 600px) {
-  #titulo {
+  .titulo {
     font-size: 2em;
+  }
+
+  .subtitulo {
+    font-size: 1em;
   }
 
   #texto {

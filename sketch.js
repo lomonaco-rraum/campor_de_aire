@@ -8,12 +8,16 @@ function setup() {
   imagen = select('#imagen').elt;
   texto = select('#texto');
 
-  zonas = loadJSON('map.geojson', () => {
+  loadJSON('map.geojson', data => {
+    zonas = data;
     console.log("✅ GeoJSON cargado correctamente");
     navigator.geolocation.getCurrentPosition(pos => {
       const lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
       verificarZona(lat, lon);
+    }, err => {
+      console.error("🚫 Error al obtener la ubicación:", err.message);
+      titulo.html("No se pudo obtener tu ubicación.");
     });
   });
 }
@@ -42,16 +46,22 @@ function dentroDelPoligono(punto, poligono) {
 }
 
 function mostrarZona(props) {
-  titulo.html(props.titulo);
-  video.src = props.video;
+  titulo.html(props.titulo || "Zona activa");
+  imagen.src = props.imagen || "assets/default.jpg";
+
+  video.src = props.video || "";
   video.load();
   video.play();
+  video.style.display = 'none';
 
-  imagen.src = props.imagen;
+  texto.html('');
 
-  fetch(props.texto)
-    .then(res => res.text())
-    .then(data => {
-      texto.html(data);
-    });
+  document.body.onclick = () => {
+    video.style.display = 'block';
+    fetch(props.texto)
+      .then(res => res.text())
+      .then(data => {
+        texto.html(data);
+      });
+  };
 }

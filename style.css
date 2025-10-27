@@ -6,36 +6,40 @@ body {
   text-align: center;
 }
 
-#pantalla-inicial, #subportada {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.titulo {
+#titulo {
   font-size: 2.5em;
-  margin: 0;
-}
-
-.subtitulo {
-  font-size: 1.2em;
-  margin-top: 0.5em;
-  max-width: 80%;
-}
-
-.firma {
   margin-top: 1em;
 }
 
-#contenido-curatorial, #mensaje-fuera {
-  padding: 2em;
+#imagen {
+  margin-top: 1em;
+  max-width: 90vw;
+  height: auto;
 }
 
-#contenido-curatorial video {
-  max-width: 90%;
+#video {
+  margin-top: 1em;
+  max-width: 90vw;
   height: auto;
-  margin: 1em 0;
+}
+
+#texto {
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1em;
+  line-height: 1.6;
+  padding: 1em;
+  max-width: 90vw;
+  margin: 0 auto;
+  text-align: justify;
+  word-wrap: break-word;
+}
+
+@media (max-width: 600px) {
+  #titulo {
+    font-size: 2em;
+  }
+
+  #texto {
+    font-size: 0.95em;
+  }
 }

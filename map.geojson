@@ -8,7 +8,8 @@
         "titulo": "La evidencia del vacío",
         "video": "assets/zona1.mp4",
         "imagen": "assets/zona1.jpg",
-        "texto": "assets/zona1.txt"
+        "texto": "assets/zona1.txt",
+        "audio": "assets/zona1.wav"
       },
       "geometry": {
         "type": "Polygon",
@@ -30,7 +31,8 @@
         "titulo": "Campos de aire",
         "video": "assets/zona2.mp4",
         "imagen": "assets/zona2.jpg",
-        "texto": "assets/zona2.txt"
+        "texto": "assets/zona2.txt",
+        "audio": "assets/zona2.wav"
       },
       "geometry": {
         "type": "Polygon",
@@ -54,7 +56,8 @@
         "titulo": "El in-útil",
         "video": "assets/zona3.mp4",
         "imagen": "assets/zona3.jpg",
-        "texto": "assets/zona3.txt"
+        "texto": "assets/zona3.txt",
+        "audio": "assets/zona3.wav"
       },
       "geometry": {
         "type": "Polygon",
@@ -76,7 +79,8 @@
         "titulo": "La diferencia",
         "video": "assets/zona4.mp4",
         "imagen": "assets/zona4.jpg",
-        "texto": "assets/zona4.txt"
+        "texto": "assets/zona4.txt",
+        "audio": "assets/zona4.wav"
       },
       "geometry": {
         "type": "Polygon",

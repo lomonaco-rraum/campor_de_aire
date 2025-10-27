@@ -1,65 +1,57 @@
 let zonas;
-let zonaActiva = null;
-let audio = null;
-
-function preload() {
-  zonas = loadJSON('map.geojson',
-    () => console.log("✅ GeoJSON cargado correctamente"),
-    () => console.log("❌ Error al cargar el GeoJSON")
-  );
-}
+let video, imagen, texto, titulo;
 
 function setup() {
   noCanvas();
-}
+  titulo = select('#titulo');
+  video = select('#video').elt;
+  imagen = select('#imagen').elt;
+  texto = select('#texto');
 
-function iniciarExperiencia() {
-  document.getElementById("pantalla-inicial").style.display = "none";
-
-  if (navigator.geolocation) {
+  zonas = loadJSON('map.geojson', () => {
+    console.log("✅ GeoJSON cargado correctamente");
     navigator.geolocation.getCurrentPosition(pos => {
-      const punto = [pos.coords.longitude, pos.coords.latitude];
-      zonaActiva = buscarZona(punto);
-      if (zonaActiva) {
-        mostrarSubportada(zonaActiva.properties);
-      } else {
-        mostrarMensajeFueraDeZona();
-      }
-    }, err => {
-      console.log("❌ Error al obtener ubicación", err);
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      verificarZona(lat, lon);
     });
-  }
+  });
 }
 
-function buscarZona(punto) {
-  for (let i = 0; i < zonas.features.length; i++) {
-    let poligono = zonas.features[i].geometry;
-    if (turf.booleanPointInPolygon(punto, poligono)) {
-      return zonas.features[i];
+function verificarZona(lat, lon) {
+  for (let feature of zonas.features) {
+    if (dentroDelPoligono([lon, lat], feature.geometry.coordinates[0])) {
+      mostrarZona(feature.properties);
+      return;
     }
   }
-  return null;
+  console.log("❌ No estás dentro de ninguna zona.");
 }
 
-function mostrarSubportada(props) {
-  document.getElementById("subportada").style.display = "flex";
-  document.getElementById("titulo-zona").textContent = props.titulo;
+function dentroDelPoligono(punto, poligono) {
+  let x = punto[0], y = punto[1];
+  let dentro = false;
+  for (let i = 0, j = poligono.length - 1; i < poligono.length; j = i++) {
+    let xi = poligono[i][0], yi = poligono[i][1];
+    let xj = poligono[j][0], yj = poligono[j][1];
+    let intersecta = ((yi > y) !== (yj > y)) &&
+                     (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+    if (intersecta) dentro = !dentro;
+  }
+  return dentro;
 }
 
-function mostrarContenidoFinal() {
-  if (!zonaActiva) return;
-
-  document.getElementById("subportada").style.display = "none";
-  document.getElementById("contenido-curatorial").style.display = "block";
-
-  const props = zonaActiva.properties;
-
-  const video = document.getElementById("video");
+function mostrarZona(props) {
+  titulo.html(props.titulo);
   video.src = props.video;
   video.load();
   video.play();
-}
 
-function mostrarMensajeFueraDeZona() {
-  document.getElementById("mensaje-fuera").style.display = "block";
+  imagen.src = props.imagen;
+
+  fetch(props.texto)
+    .then(res => res.text())
+    .then(data => {
+      texto.html(data);
+    });
 }

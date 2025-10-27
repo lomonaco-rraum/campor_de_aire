@@ -6,7 +6,9 @@
       "properties": {
         "id": "zona1",
         "titulo": "La evidencia del vacío",
-        "video": "assets/videos/video1.mp4"
+        "video": "assets/zona1.mp4",
+        "imagen": "assets/zona1.jpg",
+        "texto": "assets/zona1.txt"
       },
       "geometry": {
         "type": "Polygon",
@@ -26,7 +28,9 @@
       "properties": {
         "id": "zona2",
         "titulo": "Campos de aire",
-        "video": "assets/videos/video2.mp4"
+        "video": "assets/zona2.mp4",
+        "imagen": "assets/zona2.jpg",
+        "texto": "assets/zona2.txt"
       },
       "geometry": {
         "type": "Polygon",
@@ -48,7 +52,9 @@
       "properties": {
         "id": "zona3",
         "titulo": "El in-útil",
-        "video": "assets/videos/video3.mp4"
+        "video": "assets/zona3.mp4",
+        "imagen": "assets/zona3.jpg",
+        "texto": "assets/zona3.txt"
       },
       "geometry": {
         "type": "Polygon",
@@ -68,7 +74,9 @@
       "properties": {
         "id": "zona4",
         "titulo": "La diferencia",
-        "video": "assets/videos/video4.mp4"
+        "video": "assets/zona4.mp4",
+        "imagen": "assets/zona4.jpg",
+        "texto": "assets/zona4.txt"
       },
       "geometry": {
         "type": "Polygon",
@@ -79,46 +87,6 @@
             [-60.6414863812047, -32.94523436861731],
             [-60.64141568101887, -32.9450629679454],
             [-60.642105007837145, -32.94495089809622]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "zona-test",
-        "titulo": "Zona de prueba en General Alvear",
-        "video": "assets/videos/video-test.mp4"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [-60.65488372354609, -32.93511830292217],
-            [-60.65563247100391, -32.93896565092217],
-            [-60.64982585806972, -32.940094174586896],
-            [-60.648236679793186, -32.93611862950273],
-            [-60.65488372354609, -32.93511830292217]
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "zona-rosario-extra",
-        "titulo": "Zona activa en Rosario",
-        "video": "assets/videos/video-rosario.mp4"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [-60.653753246801074, -32.93817536846019],
-            [-60.65412462171068, -32.93944721185219],
-            [-60.650770267689154, -32.94020628753148],
-            [-60.65033899360061, -32.93876856251555],
-            [-60.653753246801074, -32.93817536846019]
           ]
         ]
       }

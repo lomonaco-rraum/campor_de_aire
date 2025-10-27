@@ -19,7 +19,6 @@ body {
 .titulo {
   font-size: 2.5em;
   margin: 0;
-  font-family: 'Cutive Mono', monospace;
 }
 
 .subtitulo {
@@ -33,9 +32,11 @@ body {
   font-size: 0.9em;
 }
 
-#contenido-curatorial {
+#zona-detectada,
+#contenido-curatorial,
+#multimedia {
   padding: 2em;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
 }
@@ -43,7 +44,6 @@ body {
 #titulo {
   font-size: 2em;
   margin-top: 1em;
-  font-family: 'Cutive Mono', monospace;
   text-align: center;
 }
 
@@ -78,6 +78,14 @@ body {
 
 #texto * {
   font-family: 'Cutive Mono', monospace !important;
+}
+
+button {
+  margin-top: 1em;
+  padding: 0.5em 1em;
+  font-family: 'Cutive Mono', monospace;
+  font-size: 1em;
+  cursor: pointer;
 }
 
 @media (max-width: 600px) {

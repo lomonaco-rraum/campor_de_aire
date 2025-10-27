@@ -1,21 +1,24 @@
 let zonas;
-let video, imagen, texto, titulo, audio;
-let portada, contenido;
+let video, audio, texto, titulo, imagen;
+let portada, zonaDetectada, contenido, multimedia;
+let btnConocer, btnImagenes;
 
 function setup() {
   noCanvas();
   titulo = select('#titulo');
-  video = select('#video').elt;
   imagen = select('#imagen').elt;
-  texto = select('#texto');
+  video = select('#video').elt;
   audio = select('#audio').elt;
+  texto = select('#texto');
   portada = select('#pantalla-inicial');
+  zonaDetectada = select('#zona-detectada');
   contenido = select('#contenido-curatorial');
+  multimedia = select('#multimedia');
+  btnConocer = select('#btn-conocer');
+  btnImagenes = select('#btn-imagenes');
 
   portada.mousePressed(() => {
     portada.hide();
-    contenido.show();
-
     loadJSON('map.geojson', data => {
       zonas = data;
       navigator.geolocation.getCurrentPosition(pos => {
@@ -24,8 +27,21 @@ function setup() {
         verificarZona(lat, lon);
       }, err => {
         titulo.html("No se pudo obtener tu ubicación.");
+        zonaDetectada.show();
       });
     });
+  });
+
+  btnConocer.mousePressed(() => {
+    zonaDetectada.style('display', 'none');
+    contenido.style('display', 'flex');
+  });
+
+  btnImagenes.mousePressed(() => {
+    contenido.style('display', 'none');
+    multimedia.style('display', 'flex');
+    video.play();
+    audio.play();
   });
 }
 
@@ -37,6 +53,7 @@ function verificarZona(lat, lon) {
     }
   }
   titulo.html("No estás dentro de ninguna zona activa.");
+  zonaDetectada.show();
 }
 
 function dentroDelPoligono(punto, poligono) {
@@ -55,24 +72,16 @@ function dentroDelPoligono(punto, poligono) {
 function mostrarZona(props) {
   titulo.html(props.titulo || "Zona activa");
   imagen.src = props.imagen || "assets/default.jpg";
-
-  audio.src = props.audio || props.video.replace('.mp4', '.wav');
-  audio.load();
-  audio.play();
+  zonaDetectada.style('display', 'flex');
 
   video.src = props.video || "";
   video.load();
-  video.style.display = 'none';
-  texto.html('');
+  audio.src = props.audio || props.video.replace('.mp4', '.wav');
+  audio.load();
 
-  document.body.onclick = () => {
-    video.style.display = 'block';
-    video.play();
-
-    fetch(props.texto)
-      .then(res => res.text())
-      .then(data => {
-        texto.html(data);
-      });
-  };
+  fetch(props.texto)
+    .then(res => res.text())
+    .then(data => {
+      texto.html(data);
+    });
 }

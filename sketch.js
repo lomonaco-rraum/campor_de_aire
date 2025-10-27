@@ -33,8 +33,7 @@ function setup() {
         const lon = pos.coords.longitude;
         verificarZona(lat, lon);
       }, err => {
-        titulo.html("No se pudo obtener tu ubicación.");
-        zonaDetectada.show();
+        mostrarMensajeFueraDeZona();
       });
     });
   });
@@ -61,8 +60,24 @@ function verificarZona(lat, lon) {
     }
   }
 
+  mostrarMensajeFueraDeZona();
+}
+
+function mostrarMensajeFueraDeZona() {
   titulo.html("No estás dentro de ninguna zona activa.");
-  zonaDetectada.show();
+  imagen.src = ""; // Ocultar imagen si hubiera
+  zonaDetectada.style('display', 'flex');
+
+  // Agregar subtítulo final
+  const subtituloFinal = createP("Intenta en otro sitio para acceder a la experiencia");
+  subtituloFinal.parent(zonaDetectada);
+  subtituloFinal.style('margin-top', '1em');
+  subtituloFinal.style('font-family', 'Cutive Mono');
+  subtituloFinal.style('font-size', '1em');
+  subtituloFinal.style('color', '#444');
+
+  // Ocultar botón "Conocer más"
+  btnConocer.hide();
 }
 
 function dentroDelPoligono(punto, poligono) {

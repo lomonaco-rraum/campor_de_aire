@@ -2,38 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Entre la posibilidad e imposibilidad</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <title>Zonas activas</title>
 </head>
 <body>
-  <!-- Portada principal -->
-  <div id="pantalla-inicial" onclick="iniciarExperiencia()">
-    <h1 class="titulo">Entre la posibilidad e imposibilidad</h1>
-    <p class="subtitulo">Una ontología experimental sobre el espacio</p>
-    <div class="firma">
-      <p>Paula Lomonaco</p>
-      <a href="https://www.instagram.com/raum.lab" target="_blank">raum.lab</a>
-    </div>
-  </div>
+  <h1 id="titulo">Zona activa</h1>
 
-  <!-- Subportada por zona -->
-  <div id="subportada" style="display:none;" onclick="mostrarContenidoFinal()">
-    <h2 id="titulo-zona"></h2>
-  </div>
+  <video id="video" controls width="400"></video>
+  <br />
+  <img id="imagen" alt="Imagen de la zona" width="400" />
+  <div id="texto"></div>
 
-  <!-- Contenido curatorial -->
-  <div id="contenido-curatorial" style="display:none;">
-    <video id="video" controls autoplay muted></video>
-  </div>
-
-  <!-- Mensaje fuera de zona -->
-  <div id="mensaje-fuera" style="display:none;">
-    <p>No estás en una zona activa. Explorá el espacio para descubrir las obras.</p>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
   <script src="sketch.js"></script>
 </body>
 </html>

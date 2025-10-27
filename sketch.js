@@ -65,7 +65,10 @@ function verificarZona(lat, lon) {
 
 function mostrarMensajeFueraDeZona() {
   titulo.html("No estás dentro de ninguna zona activa.");
-  imagen.src = ""; // Ocultar imagen si hubiera
+
+  // Ocultar imagen si no hay zona activa
+  imagen.style.display = 'none';
+
   zonaDetectada.style('display', 'flex');
 
   // Agregar subtítulo final
@@ -100,7 +103,11 @@ function dentroDelPoligono(punto, poligono) {
 function mostrarZona(props) {
   // Etapa 2: mostrar título e imagen
   titulo.html(props.titulo || "Zona activa");
+
+  // Mostrar imagen solo si hay zona activa
   imagen.src = props.imagen || "assets/default.jpg";
+  imagen.style.display = 'block';
+
   zonaDetectada.style('display', 'flex');
 
   // Reproducir audio en esta etapa

@@ -34,7 +34,6 @@ body {
   padding: 2em;
 }
 
-#contenido-curatorial img,
 #contenido-curatorial video {
   max-width: 90%;
   height: auto;

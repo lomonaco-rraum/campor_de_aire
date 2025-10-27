@@ -8,6 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 </head>
 <body>
+  <!-- Portada principal -->
   <div id="pantalla-inicial" onclick="iniciarExperiencia()">
     <h1 class="titulo">Entre la posibilidad e imposibilidad</h1>
     <p class="subtitulo">Una ontología experimental sobre el espacio</p>
@@ -17,11 +18,19 @@
     </div>
   </div>
 
-  <div id="contenido-curatorial" style="display:none;">
-    <h2 id="titulo"></h2>
-    <video id="video" controls autoplay muted></video>
+  <!-- Subportada por zona -->
+  <div id="subportada" style="display:none;" onclick="mostrarContenidoFinal()">
+    <h2 id="titulo-zona"></h2>
   </div>
 
+  <!-- Contenido curatorial -->
+  <div id="contenido-curatorial" style="display:none;">
+    <img id="imagen" />
+    <video id="video" controls autoplay muted></video>
+    <div id="texto"></div>
+  </div>
+
+  <!-- Mensaje fuera de zona -->
   <div id="mensaje-fuera" style="display:none;">
     <p>No estás en una zona activa. Explorá el espacio para descubrir las obras.</p>
   </div>

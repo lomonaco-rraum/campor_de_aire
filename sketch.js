@@ -1,75 +1,65 @@
-let sonido;
 let zonas;
+let zonaActiva = null;
+let audio = null;
 
 function preload() {
-  sonido = loadSound('voz2.wav',
-    () => console.log("✅ Sonido cargado correctamente"),
-    () => console.log("❌ Error al cargar el sonido")
-  );
-
-  zonas = loadJSON('zonas_de_aire.geojson',
+  zonas = loadJSON('map.geojson',
     () => console.log("✅ GeoJSON cargado correctamente"),
     () => console.log("❌ Error al cargar el GeoJSON")
   );
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  noLoop();
-  background(255);
-}
-
-function draw() {
-  // vacío: atmósfera blanca sin visualización
+  noCanvas();
 }
 
 function iniciarExperiencia() {
   document.getElementById("pantalla-inicial").style.display = "none";
-  getAudioContext().resume();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(pos => {
       const punto = [pos.coords.longitude, pos.coords.latitude];
-      console.log("📍 Ubicación:", punto);
-
-      const dentro = verificarZona(punto);
-      console.log("📦 Dentro de zona:", dentro);
-
-      if (dentro) {
-        sonido.setVolume(1);
-        sonido.play();
-        loop();
+      zonaActiva = buscarZona(punto);
+      if (zonaActiva) {
+        mostrarSubportada(zonaActiva.properties);
       } else {
-        console.log("🚫 Fuera de zona: no se reproduce sonido");
+        mostrarMensajeFueraDeZona();
       }
     }, err => {
       console.log("❌ Error al obtener ubicación", err);
     });
-  } else {
-    console.log("❌ Geolocalización no disponible");
   }
 }
 
-function verificarZona(punto) {
+function buscarZona(punto) {
   for (let i = 0; i < zonas.features.length; i++) {
-    let coords = zonas.features[i].geometry.coordinates[0];
-    if (puntoEnPoligono(punto, coords)) {
-      return true;
+    let poligono = zonas.features[i].geometry;
+    if (turf.booleanPointInPolygon(punto, poligono)) {
+      return zonas.features[i];
     }
   }
-  return false;
+  return null;
 }
 
-function puntoEnPoligono(punto, poligono) {
-  let x = punto[0], y = punto[1];
-  let dentro = false;
-  for (let i = 0, j = poligono.length - 1; i < poligono.length; j = i++) {
-    let xi = poligono[i][0], yi = poligono[i][1];
-    let xj = poligono[j][0], yj = poligono[j][1];
+function mostrarSubportada(props) {
+  document.getElementById("subportada").style.display = "flex";
+  document.getElementById("titulo-zona").textContent = props.titulo;
+}
 
-    let intersecta = ((yi > y) !== (yj > y)) &&
-                     (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-    if (intersecta) dentro = !dentro;
-  }
-  return dentro;
+function mostrarContenidoFinal() {
+  if (!zonaActiva) return;
+
+  document.getElementById("subportada").style.display = "none";
+  document.getElementById("contenido-curatorial").style.display = "block";
+
+  const props = zonaActiva.properties;
+
+  const video = document.getElementById("video");
+  video.src = props.video;
+  video.load();
+  video.play();
+}
+
+function mostrarMensajeFueraDeZona() {
+  document.getElementById("mensaje-fuera").style.display = "block";
 }

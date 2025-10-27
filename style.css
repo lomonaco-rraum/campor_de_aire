@@ -1,32 +1,42 @@
-.titulo {
-  font-size: 8vw;
-  font-weight: normal;
-  color: #3b3737;
+body {
+  margin: 0;
   font-family: 'Cutive Mono', monospace;
+  background-color: #fdfdfd;
+  color: #111;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
-/* Firma en esquina inferior izquierda */
+#pantalla-inicial, #subportada {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.titulo {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.subtitulo {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  max-width: 80%;
+}
+
 .firma {
-  position: absolute;
-  bottom: 2vh;
-  left: 2vw;
-  font-size: 3.5vw;
-  color: #3b3737;
-  font-family: 'Cutive Mono', monospace;
-  text-align: left;
+  margin-top: 1em;
 }
 
-.firma a {
-  color: #3b3737;
-  text-decoration: none;
-  font-size: 3.5vw;
+#contenido-curatorial, #mensaje-fuera {
+  padding: 2em;
 }
 
-.firma a:hover {
-  text-decoration: underline;
+#contenido-curatorial img,
+#contenido-curatorial video {
+  max-width: 90%;
+  height: auto;
+  margin: 1em 0;
 }

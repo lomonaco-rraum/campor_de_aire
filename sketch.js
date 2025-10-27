@@ -1,5 +1,5 @@
 let zonas;
-let video, imagen, texto, titulo;
+let video, imagen, texto, titulo, audio;
 let portada, contenido;
 
 function setup() {
@@ -8,6 +8,7 @@ function setup() {
   video = select('#video').elt;
   imagen = select('#imagen').elt;
   texto = select('#texto');
+  audio = select('#audio').elt;
   portada = select('#pantalla-inicial');
   contenido = select('#contenido-curatorial');
 
@@ -54,6 +55,11 @@ function dentroDelPoligono(punto, poligono) {
 function mostrarZona(props) {
   titulo.html(props.titulo || "Zona activa");
   imagen.src = props.imagen || "assets/default.jpg";
+
+  audio.src = props.audio || props.video.replace('.mp4', '.wav');
+  audio.load();
+  audio.play();
+
   video.src = props.video || "";
   video.load();
   video.style.display = 'none';

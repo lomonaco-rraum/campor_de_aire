@@ -1,3 +1,4 @@
+/* Tipografía y estructura base */
 body {
   margin: 0;
   font-family: 'Cutive Mono', monospace;
@@ -6,6 +7,7 @@ body {
   text-align: center;
 }
 
+/* Portada inicial */
 #pantalla-inicial {
   height: 100vh;
   display: flex;
@@ -13,6 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  padding: 2em;
 }
 
 .titulo {
@@ -29,41 +32,57 @@ body {
 
 .firma {
   margin-top: 1em;
+  font-size: 0.9em;
 }
 
+/* Contenido curatorial */
 #contenido-curatorial {
   padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #titulo {
   font-size: 2em;
   margin-top: 1em;
   font-family: 'Cutive Mono', monospace;
+  text-align: center;
 }
 
+/* Imagen y video */
 #imagen {
   margin-top: 1em;
-  max-width: 90vw;
+  width: 90vw;
+  max-width: 400px;
   height: auto;
 }
 
 #video {
   margin-top: 1em;
-  max-width: 90vw;
+  width: 90vw;
+  max-width: 400px;
   height: auto;
 }
 
+/* Texto curatorial */
 #texto {
   font-family: 'Cutive Mono', monospace;
   font-size: 1em;
   line-height: 1.6;
-  padding: 1em;
-  max-width: 90vw;
-  margin: 0 auto;
+  margin-top: 1em;
   text-align: justify;
   word-wrap: break-word;
+  width: 90vw;
+  max-width: 400px;
 }
 
+/* Asegura que todo dentro de #texto use la misma fuente */
+#texto * {
+  font-family: 'Cutive Mono', monospace !important;
+}
+
+/* Responsive para móviles */
 @media (max-width: 600px) {
   .titulo {
     font-size: 2em;
@@ -71,6 +90,10 @@ body {
 
   .subtitulo {
     font-size: 1em;
+  }
+
+  #titulo {
+    font-size: 1.5em;
   }
 
   #texto {
